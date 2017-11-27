@@ -10,9 +10,20 @@
 #define Card_h
 
 #include <stdio.h>
+#include <string>
+
+using namespace std;
 
 class Card {
+    private:
+        string cardType;
+        int value;
     
+    public:
+        Card(int);
+        string getCardType() const;
+        int getValue() const;
+        void setValue(int);
 };
 
 #endif /* Card_h */
