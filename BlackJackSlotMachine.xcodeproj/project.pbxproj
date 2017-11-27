@@ -1,0 +1,273 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		40DA3FA91FC2C721002108A6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40DA3FA81FC2C721002108A6 /* main.cpp */; };
+		40DA3FB11FC2C72F002108A6 /* Card.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40DA3FAF1FC2C72F002108A6 /* Card.cpp */; };
+		40DA3FB41FC2C73B002108A6 /* Account.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40DA3FB21FC2C73B002108A6 /* Account.cpp */; };
+		40DA3FB71FC2C74C002108A6 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40DA3FB51FC2C74C002108A6 /* Player.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		40DA3FA31FC2C721002108A6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		40DA3FA51FC2C721002108A6 /* BlackJackSlotMachine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BlackJackSlotMachine; sourceTree = BUILT_PRODUCTS_DIR; };
+		40DA3FA81FC2C721002108A6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		40DA3FAF1FC2C72F002108A6 /* Card.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Card.cpp; sourceTree = "<group>"; };
+		40DA3FB01FC2C72F002108A6 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
+		40DA3FB21FC2C73B002108A6 /* Account.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Account.cpp; sourceTree = "<group>"; };
+		40DA3FB31FC2C73B002108A6 /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
+		40DA3FB51FC2C74C002108A6 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
+		40DA3FB61FC2C74C002108A6 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		40DA3FA21FC2C721002108A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		40DA3F9C1FC2C721002108A6 = {
+			isa = PBXGroup;
+			children = (
+				40DA3FA71FC2C721002108A6 /* BlackJackSlotMachine */,
+				40DA3FA61FC2C721002108A6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		40DA3FA61FC2C721002108A6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				40DA3FA51FC2C721002108A6 /* BlackJackSlotMachine */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		40DA3FA71FC2C721002108A6 /* BlackJackSlotMachine */ = {
+			isa = PBXGroup;
+			children = (
+				40DA3FA81FC2C721002108A6 /* main.cpp */,
+				40DA3FAF1FC2C72F002108A6 /* Card.cpp */,
+				40DA3FB01FC2C72F002108A6 /* Card.h */,
+				40DA3FB21FC2C73B002108A6 /* Account.cpp */,
+				40DA3FB31FC2C73B002108A6 /* Account.h */,
+				40DA3FB51FC2C74C002108A6 /* Player.cpp */,
+				40DA3FB61FC2C74C002108A6 /* Player.h */,
+			);
+			path = BlackJackSlotMachine;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		40DA3FA41FC2C721002108A6 /* BlackJackSlotMachine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40DA3FAC1FC2C721002108A6 /* Build configuration list for PBXNativeTarget "BlackJackSlotMachine" */;
+			buildPhases = (
+				40DA3FA11FC2C721002108A6 /* Sources */,
+				40DA3FA21FC2C721002108A6 /* Frameworks */,
+				40DA3FA31FC2C721002108A6 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BlackJackSlotMachine;
+			productName = BlackJackSlotMachine;
+			productReference = 40DA3FA51FC2C721002108A6 /* BlackJackSlotMachine */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		40DA3F9D1FC2C721002108A6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Steven Garcia";
+				TargetAttributes = {
+					40DA3FA41FC2C721002108A6 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 40DA3FA01FC2C721002108A6 /* Build configuration list for PBXProject "BlackJackSlotMachine" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 40DA3F9C1FC2C721002108A6;
+			productRefGroup = 40DA3FA61FC2C721002108A6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				40DA3FA41FC2C721002108A6 /* BlackJackSlotMachine */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		40DA3FA11FC2C721002108A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40DA3FB71FC2C74C002108A6 /* Player.cpp in Sources */,
+				40DA3FA91FC2C721002108A6 /* main.cpp in Sources */,
+				40DA3FB41FC2C73B002108A6 /* Account.cpp in Sources */,
+				40DA3FB11FC2C72F002108A6 /* Card.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		40DA3FAA1FC2C721002108A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		40DA3FAB1FC2C721002108A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		40DA3FAD1FC2C721002108A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		40DA3FAE1FC2C721002108A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		40DA3FA01FC2C721002108A6 /* Build configuration list for PBXProject "BlackJackSlotMachine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40DA3FAA1FC2C721002108A6 /* Debug */,
+				40DA3FAB1FC2C721002108A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		40DA3FAC1FC2C721002108A6 /* Build configuration list for PBXNativeTarget "BlackJackSlotMachine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40DA3FAD1FC2C721002108A6 /* Debug */,
+				40DA3FAE1FC2C721002108A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 40DA3F9D1FC2C721002108A6 /* Project object */;
+}
