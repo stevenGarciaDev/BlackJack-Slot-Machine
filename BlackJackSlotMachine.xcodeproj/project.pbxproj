@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		40DA3FA91FC2C721002108A6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40DA3FA81FC2C721002108A6 /* main.cpp */; };
+		40DA3FA91FC2C721002108A6 /* SlotMachine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40DA3FA81FC2C721002108A6 /* SlotMachine.cpp */; };
 		40DA3FB11FC2C72F002108A6 /* Card.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40DA3FAF1FC2C72F002108A6 /* Card.cpp */; };
 		40DA3FB41FC2C73B002108A6 /* Account.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40DA3FB21FC2C73B002108A6 /* Account.cpp */; };
 		40DA3FB71FC2C74C002108A6 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40DA3FB51FC2C74C002108A6 /* Player.cpp */; };
@@ -27,7 +27,7 @@
 
 /* Begin PBXFileReference section */
 		40DA3FA51FC2C721002108A6 /* BlackJackSlotMachine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BlackJackSlotMachine; sourceTree = BUILT_PRODUCTS_DIR; };
-		40DA3FA81FC2C721002108A6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		40DA3FA81FC2C721002108A6 /* SlotMachine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SlotMachine.cpp; sourceTree = "<group>"; };
 		40DA3FAF1FC2C72F002108A6 /* Card.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Card.cpp; sourceTree = "<group>"; };
 		40DA3FB01FC2C72F002108A6 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
 		40DA3FB21FC2C73B002108A6 /* Account.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Account.cpp; sourceTree = "<group>"; };
@@ -66,7 +66,7 @@
 		40DA3FA71FC2C721002108A6 /* BlackJackSlotMachine */ = {
 			isa = PBXGroup;
 			children = (
-				40DA3FA81FC2C721002108A6 /* main.cpp */,
+				40DA3FA81FC2C721002108A6 /* SlotMachine.cpp */,
 				40DA3FAF1FC2C72F002108A6 /* Card.cpp */,
 				40DA3FB01FC2C72F002108A6 /* Card.h */,
 				40DA3FB21FC2C73B002108A6 /* Account.cpp */,
@@ -135,7 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				40DA3FB71FC2C74C002108A6 /* Player.cpp in Sources */,
-				40DA3FA91FC2C721002108A6 /* main.cpp in Sources */,
+				40DA3FA91FC2C721002108A6 /* SlotMachine.cpp in Sources */,
 				40DA3FB41FC2C73B002108A6 /* Account.cpp in Sources */,
 				40DA3FB11FC2C72F002108A6 /* Card.cpp in Sources */,
 			);
@@ -266,6 +266,7 @@
 				40DA3FAE1FC2C721002108A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

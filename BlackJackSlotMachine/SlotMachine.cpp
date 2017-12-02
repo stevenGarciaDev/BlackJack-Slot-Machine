@@ -11,14 +11,21 @@
 using namespace std;
 
 int main(int argc, const char * argv[]) {
-    int accountNumber;
+    string accountNumber;
     double amountBeingGambled;
     string userInputDecision;
     
     cout << "Enter your account number: ";
     try {
         cin >> accountNumber;
-    } catch () {
+        
+        for (int i = 0; i < accountNumber.length(); i++) {
+            if (48 > accountNumber[i] || 57 < accountNumber[i]) {
+                throw "Invalid Character";
+            }
+        }
+    
+    } catch (string exc) {
         cout << "Invalid account number." << endl;
     }
     
@@ -26,8 +33,6 @@ int main(int argc, const char * argv[]) {
     cin >> amountBeingGambled;
     
     // generate random two cards to display
-    
-    //
     
     cout << "The value of your cards is " << endl;
     cout << "Do you want to HIT, STAND, or SPLIT? : ";

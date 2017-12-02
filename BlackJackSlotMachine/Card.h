@@ -9,7 +9,6 @@
 #ifndef Card_h
 #define Card_h
 
-#include <stdio.h>
 #include <string>
 
 using namespace std;

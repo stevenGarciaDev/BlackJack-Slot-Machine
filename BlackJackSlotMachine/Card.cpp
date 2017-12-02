@@ -72,3 +72,29 @@ Card::Card(int randomNum) {
             break;
     }
 }
+
+string Card::getCardType() const {
+    return this->cardType;
+}
+
+int Card::getValue() const {
+    return this->value;
+}
+
+void Card::setValue(int value) {
+    this->value = value;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
