@@ -10,6 +10,11 @@
 
 using namespace std;
 
+/**
+ This constructor allows for instantiating
+ of any one of possible cards based on the
+ argument of a randomly generated number.
+ **/
 Card::Card(int randomNum) {
     switch (randomNum) {
         case 1:

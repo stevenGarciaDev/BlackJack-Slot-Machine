@@ -24,7 +24,10 @@ class Player {
         void setNumberOfCardsInHand(int);
         int getNumberOfCardsInHand() const;
         void addCard(Card&);
-        
+        void stand();
+        void hit();
+        void split();
+    
 };
 
 #endif /* Player_h */

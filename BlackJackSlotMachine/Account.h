@@ -26,7 +26,9 @@ class Account {
         void setAccountNumber(string);
         double getTotalAmount() const;
         void setTotalAmount(double);
-        
+        void doubleTotalAmount();
+        void splitTotalAmount();
+    
 };
 
 #endif /* Account_h */

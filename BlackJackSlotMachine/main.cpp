@@ -16,7 +16,11 @@ int main(int argc, const char * argv[]) {
     string userInputDecision;
     
     cout << "Enter your account number: ";
-    cin >> accountNumber;
+    try {
+        cin >> accountNumber;
+    } catch () {
+        cout << "Invalid account number." << endl;
+    }
     
     cout << "Enter the amount of money you want to bet: ";
     cin >> amountBeingGambled;
