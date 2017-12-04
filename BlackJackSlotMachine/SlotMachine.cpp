@@ -7,36 +7,51 @@
 //
 
 #include <iostream>
+#include "Player.h"
 
 using namespace std;
 
+Card generateRandomCard();
+
 int main(int argc, const char * argv[]) {
+    bool isInvalidAccount = true;
+    bool userWantsToPlay = true;
     string accountNumber;
     double amountBeingGambled;
     string userInputDecision;
     
-    cout << "Enter your account number: ";
-    try {
-        cin >> accountNumber;
-        
-        for (int i = 0; i < accountNumber.length(); i++) {
-            if (48 > accountNumber[i] || 57 < accountNumber[i]) {
-                throw "Invalid Character";
+    do {
+        cout << "Enter your account number: ";
+        try {
+            cin >> accountNumber;
+            
+            for (int i = 0; i < accountNumber.length(); i++) {
+                if (48 > accountNumber[i] || 57 < accountNumber[i]) {
+                    throw "Invalid Character";
+                }
             }
+            isInvalidAccount = false;
+            
+        } catch (char const* exc) {
+            cout << "Invalid account number." << endl;
         }
+    } while (isInvalidAccount);
     
-    } catch (string exc) {
-        cout << "Invalid account number." << endl;
-    }
     
-    cout << "Enter the amount of money you want to bet: ";
+    // add input validation here
+    cout << "Enter the amount of money you want to bet (Ex: 150.49): ";
     cin >> amountBeingGambled;
-    
-    // generate random two cards to display
-    
-    cout << "The value of your cards is " << endl;
-    cout << "Do you want to HIT, STAND, or SPLIT? : ";
-    cin >> userInputDecision;
+
+    while (userWantsToPlay) {
+        // generate four random cards, 2 for dealer, and 2 for player
+        
+        cout << "The value of your cards is " << endl;
+        
+        // add input validation
+        cout << "Do you want to HIT, STAND, or SPLIT? : ";
+        cin >> userInputDecision;
+        
+    }
     
     return 0;
 }

@@ -19,7 +19,9 @@ class Card {
         int value;
     
     public:
+        Card();
         Card(int);
+        void setCardType(int);
         string getCardType() const;
         int getValue() const;
         void setValue(int);

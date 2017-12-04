@@ -9,7 +9,6 @@
 #ifndef Account_h
 #define Account_h
 
-#include <stdio.h>
 #include <string>
 
 using namespace std;
@@ -26,9 +25,6 @@ class Account {
         void setAccountNumber(string);
         double getTotalAmount() const;
         void setTotalAmount(double);
-        void doubleTotalAmount();
-        void splitTotalAmount();
-    
 };
 
 #endif /* Account_h */

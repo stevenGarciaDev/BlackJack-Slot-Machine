@@ -16,6 +16,14 @@ using namespace std;
  argument of a randomly generated number.
  **/
 Card::Card(int randomNum) {
+    setCardType(randomNum);
+}
+
+string Card::getCardType() const {
+    return this->cardType;
+}
+
+void Card::setCardType(int randomNum) {
     switch (randomNum) {
         case 1:
             // ace
@@ -71,10 +79,6 @@ Card::Card(int randomNum) {
             this->value = 10;
             break;
     }
-}
-
-string Card::getCardType() const {
-    return this->cardType;
 }
 
 int Card::getValue() const {

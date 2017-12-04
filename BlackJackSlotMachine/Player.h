@@ -9,7 +9,6 @@
 #ifndef Player_h
 #define Player_h
 
-#include <stdio.h>
 #include "Account.h"
 #include "Card.h"
 
@@ -18,16 +17,19 @@ class Player {
         Account playerAccount;
         Card* cards = nullptr;
         int numberOfCardsInHand;
+        int cardMemoryCapacity;
+        int valueOfCards;
     
     public:
-        Player();
+        Player(Account);
         void setNumberOfCardsInHand(int);
         int getNumberOfCardsInHand() const;
         void addCard(Card&);
+        int getValueOfCards();
         void stand();
         void hit();
         void split();
-    
+        double winGame();
 };
 
 #endif /* Player_h */
