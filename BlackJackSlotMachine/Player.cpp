@@ -30,10 +30,11 @@ int Player::getNumberOfCardsInHand() const {
 }
 
 void Player::addCard(Card& newCard) {
-    // ensure have enough memory,
+    // ensure have enough memory in dynamic array
     
     
     *(cards + numberOfCardsInHand + 1) = newCard;
+    this->valueOfCards += newCard.getValue();
     setNumberOfCardsInHand(this->numberOfCardsInHand + 1);
 }
 
@@ -45,17 +46,24 @@ void Player::stand() {
     
 }
 
-void Player::hit() {
-    
+void Player::hit(Card& newCard) {
+    addCard(newCard);
+    if (valueOfCards >= 21) {
+        loseGame();
+    }
 }
 
 void Player::split() {
     
 }
 
-double Player::winGame() {
+void Player::winGame() {
     
-    return 0.0;
+    cout << "You win this game!" << endl;
+}
+
+void Player::loseGame() {
+    cout << "You lose this game." << endl;
 }
 
 

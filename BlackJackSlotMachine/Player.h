@@ -27,9 +27,10 @@ class Player {
         void addCard(Card&);
         int getValueOfCards();
         void stand();
-        void hit();
+        void hit(Card&);
         void split();
-        double winGame();
+        void winGame();
+    void loseGame();
 };
 
 #endif /* Player_h */
