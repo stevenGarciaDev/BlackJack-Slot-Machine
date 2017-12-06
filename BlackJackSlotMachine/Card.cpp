@@ -10,6 +10,10 @@
 
 using namespace std;
 
+Card::Card() {
+    
+}
+
 /**
  This constructor allows for instantiating
  of any one of possible cards based on the

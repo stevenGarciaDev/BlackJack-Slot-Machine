@@ -29,6 +29,11 @@ int main(int argc, const char * argv[]) {
     Player dealer;
     Player user;
     
+    double check;
+    cout << "enter a value: ";
+    cin >> check;
+    cout << "the value for " << check << endl;
+    
     /* ----------------
      Accept a valid user account number.
      ---------------- */
@@ -59,6 +64,8 @@ int main(int argc, const char * argv[]) {
         try {
             cout << "Enter the amount of money you want to bet (Ex: 1150.49): ";
             cin >> amountBeingGambled;
+            cout << amountBeingGambled << endl;
+            
             isInvalidAmount = false;
             
         } catch (exception ex) {
@@ -70,22 +77,22 @@ int main(int argc, const char * argv[]) {
      Game functionality.
      ---------------- */
     
-    while (userWantsToPlay) {
-        
-        // generate four random cards, 2 for dealer, and 2 for player
-        if (!hasDistributedInitCards) {
-            for (int i = 0; i < 4; i++) {
-                
-            }
-            hasDistributedInitCards = true;
-        }
-        
-        cout << "The value of your cards is " << endl;
-        
-        // add input validation
-        cout << "Do you want to HIT, STAND, or SPLIT? : ";
-        cin >> userInputDecision;
-    }
+//    while (userWantsToPlay) {
+//        
+//        // generate four random cards, 2 for dealer, and 2 for player
+//        if (!hasDistributedInitCards) {
+//            for (int i = 0; i < 4; i++) {
+//                
+//            }
+//            hasDistributedInitCards = true;
+//        }
+//        
+//        cout << "The value of your cards is " << endl;
+//        
+//        // add input validation
+//        cout << "Do you want to HIT, STAND, or SPLIT? : ";
+//        cin >> userInputDecision;
+//    }
     
     return 0;
 }
