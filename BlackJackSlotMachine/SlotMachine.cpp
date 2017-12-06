@@ -7,18 +7,24 @@
 //
 
 #include <iostream>
+#include <stdlib.h> // for rand() and srand()    function
 #include "Player.h"
 
 using namespace std;
 
 Card generateRandomCard();
+const int POSSIBLE_CARDS = 13;
 
 int main(int argc, const char * argv[]) {
     bool isInvalidAccount = true;
     bool userWantsToPlay = true;
+    bool hasDistributedInitCards = false;
     string accountNumber;
     double amountBeingGambled;
     string userInputDecision;
+    
+    Player dealer;
+    Player user;
     
     do {
         cout << "Enter your account number: ";
@@ -32,6 +38,7 @@ int main(int argc, const char * argv[]) {
             }
             isInvalidAccount = false;
             
+            
         } catch (char const* exc) {
             cout << "Invalid account number." << endl;
         }
@@ -43,15 +50,28 @@ int main(int argc, const char * argv[]) {
     cin >> amountBeingGambled;
 
     while (userWantsToPlay) {
+        
         // generate four random cards, 2 for dealer, and 2 for player
+        if (!hasDistributedInitCards) {
+            for (int i = 0; i < 4; i++) {
+                
+            }
+        }
         
         cout << "The value of your cards is " << endl;
         
         // add input validation
         cout << "Do you want to HIT, STAND, or SPLIT? : ";
         cin >> userInputDecision;
-        
     }
     
     return 0;
+}
+
+Card generateRandomCard() {
+    srand(time(0));
+    int randomCardIdentifier = rand() % POSSIBLE_CARDS;
+    Card newCard( randomCardIdentifier );
+    
+    return newCard;
 }

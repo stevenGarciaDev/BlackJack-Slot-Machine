@@ -21,7 +21,10 @@ class Player {
         int valueOfCards;
     
     public:
+        Player();
         Player(Account);
+        void setAccountNumber(string);
+        string getAccountNumber();
         void setNumberOfCardsInHand(int);
         int getNumberOfCardsInHand() const;
         void addCard(Card&);
@@ -30,7 +33,7 @@ class Player {
         void hit(Card&);
         void split();
         void winGame();
-    void loseGame();
+        void loseGame();
 };
 
 #endif /* Player_h */

@@ -12,6 +12,11 @@
 
 using namespace std;
 
+Player::Player() {
+    this->numberOfCardsInHand = 0;
+    this->valueOfCards = 0;
+}
+
 Player::Player(Account accountNumber) {
     this->playerAccount = accountNumber;
     this->numberOfCardsInHand = 0;
@@ -19,6 +24,15 @@ Player::Player(Account accountNumber) {
     
     this->cardMemoryCapacity = 4;
     this->cards = new Card[cardMemoryCapacity];
+}
+
+void Player::setAccountNumber(string accountNumber) {
+    // need to add input validation
+    playerAccount.setAccountNumber(accountNumber);
+}
+
+string Player::getAccountNumber() {
+    return playerAccount.getAccountNumber();
 }
 
 void Player::setNumberOfCardsInHand(int cardAmount) {
@@ -31,7 +45,6 @@ int Player::getNumberOfCardsInHand() const {
 
 void Player::addCard(Card& newCard) {
     // ensure have enough memory in dynamic array
-    
     
     *(cards + numberOfCardsInHand + 1) = newCard;
     this->valueOfCards += newCard.getValue();
