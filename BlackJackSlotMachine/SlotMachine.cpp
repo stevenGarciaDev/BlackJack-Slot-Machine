@@ -7,8 +7,10 @@
 //
 
 #include <iostream>
-#include <stdlib.h> // for rand() and srand()    function
+#include <stdlib.h> // for rand() and srand() function
+#include <exception>
 #include "Player.h"
+
 
 using namespace std;
 
@@ -17,6 +19,7 @@ const int POSSIBLE_CARDS = 13;
 
 int main(int argc, const char * argv[]) {
     bool isInvalidAccount = true;
+    bool isInvalidAmount = true;
     bool userWantsToPlay = true;
     bool hasDistributedInitCards = false;
     string accountNumber;
@@ -25,6 +28,10 @@ int main(int argc, const char * argv[]) {
     
     Player dealer;
     Player user;
+    
+    /* ----------------
+     Accept a valid user account number.
+     ---------------- */
     
     do {
         cout << "Enter your account number: ";
@@ -37,18 +44,32 @@ int main(int argc, const char * argv[]) {
                 }
             }
             isInvalidAccount = false;
-            
+            user.setAccountNumber(accountNumber);
             
         } catch (char const* exc) {
             cout << "Invalid account number." << endl;
         }
     } while (isInvalidAccount);
     
+    /* ----------------
+     Accept valid double precision amount that user wants to gamble.
+     ---------------- */
     
-    // add input validation here
-    cout << "Enter the amount of money you want to bet (Ex: 150.49): ";
-    cin >> amountBeingGambled;
-
+    do {
+        try {
+            cout << "Enter the amount of money you want to bet (Ex: 1150.49): ";
+            cin >> amountBeingGambled;
+            isInvalidAmount = false;
+            
+        } catch (exception ex) {
+            cout << "Invalid amount entered. Please enter in format example: 2500.00 " << endl;
+        }
+    } while( isInvalidAmount );
+    
+    /* ----------------
+     Game functionality.
+     ---------------- */
+    
     while (userWantsToPlay) {
         
         // generate four random cards, 2 for dealer, and 2 for player
@@ -56,6 +77,7 @@ int main(int argc, const char * argv[]) {
             for (int i = 0; i < 4; i++) {
                 
             }
+            hasDistributedInitCards = true;
         }
         
         cout << "The value of your cards is " << endl;
