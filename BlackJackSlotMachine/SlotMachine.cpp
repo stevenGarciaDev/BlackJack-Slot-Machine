@@ -29,11 +29,6 @@ int main(int argc, const char * argv[]) {
     Player dealer;
     Player user;
     
-    double check;
-    cout << "enter a value: ";
-    cin >> check;
-    cout << "the value for " << check << endl;
-    
     /* ----------------
      Accept a valid user account number.
      ---------------- */
