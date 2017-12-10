@@ -9,8 +9,8 @@
 #include <iostream>
 #include <stdlib.h> // for rand() and srand() function
 #include <exception>
+#include <iomanip>
 #include "Player.h"
-
 
 using namespace std;
 
@@ -18,6 +18,8 @@ Card generateRandomCard();
 const int POSSIBLE_CARDS = 13;
 
 int main(int argc, const char * argv[]) {
+    cout << fixed << showpoint << setprecision(2);
+    
     bool isInvalidAccount = true;
     bool isInvalidAmount = true;
     bool userWantsToPlay = true;
@@ -55,15 +57,38 @@ int main(int argc, const char * argv[]) {
      Accept valid double precision amount that user wants to gamble.
      ---------------- */
     
+    cin.ignore();
+    int decimalOccurances = 0;
+    
     do {
         try {
             cout << "Enter the amount of money you want to bet (Ex: 1150.49): ";
-            cin >> amountBeingGambled;
+            getline(cin, userInputDecision); // take in input as a string
+            
+            for (int i = 0; i < userInputDecision.length(); i++) {
+                if (userInputDecision[i] == 46) {
+                    decimalOccurances++;
+                    
+                    if (decimalOccurances > 1) {
+                        throw "Invalid Character, too many decimal points";
+                    }
+                    
+                    continue;
+                }
+                
+                if (48 > userInputDecision[i] || 57 < userInputDecision[i]) {
+                    throw "Invalid Character";
+                 }
+            }
+            
+            // str needs to be converted to c_str then converted to double value
+            amountBeingGambled = atof(userInputDecision.c_str());
+            
             cout << amountBeingGambled << endl;
             
             isInvalidAmount = false;
             
-        } catch (exception ex) {
+        } catch (char const* exc) {
             cout << "Invalid amount entered. Please enter in format example: 2500.00 " << endl;
         }
     } while( isInvalidAmount );
