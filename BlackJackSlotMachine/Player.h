@@ -23,8 +23,8 @@ class Player {
     public:
         Player();
         Player(Account);
-        void setAccountNumber(string);
-        string getAccountNumber();
+        void setAccount(Account);
+        double getAccount() const;
         void setNumberOfCardsInHand(int);
         int getNumberOfCardsInHand() const;
         void addCard(Card&);
@@ -32,6 +32,7 @@ class Player {
         void stand();
         void hit(Card&);
         void split();
+    
         void winGame();
         void loseGame();
 };

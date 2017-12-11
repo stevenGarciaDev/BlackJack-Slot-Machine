@@ -11,6 +11,7 @@
 #include <exception>
 #include <iomanip>
 #include "Player.h"
+#include "Account.h"
 
 using namespace std;
 
@@ -24,10 +25,12 @@ int main(int argc, const char * argv[]) {
     bool isInvalidAmount = true;
     bool userWantsToPlay = true;
     bool hasDistributedInitCards = false;
+    int decimalOccurances = 0;
     string accountNumber;
     double amountBeingGambled;
     string userInputDecision;
     
+    Account userAccount;
     Player dealer;
     Player user;
     
@@ -46,7 +49,7 @@ int main(int argc, const char * argv[]) {
                 }
             }
             isInvalidAccount = false;
-            user.setAccountNumber(accountNumber);
+            userAccount.setAccountNumber(accountNumber);
             
         } catch (char const* exc) {
             cout << "Invalid account number." << endl;
@@ -58,7 +61,6 @@ int main(int argc, const char * argv[]) {
      ---------------- */
     
     cin.ignore();
-    int decimalOccurances = 0;
     
     do {
         try {
@@ -83,7 +85,7 @@ int main(int argc, const char * argv[]) {
             
             // str needs to be converted to c_str then converted to double value
             amountBeingGambled = atof(userInputDecision.c_str());
-            
+            userAccount.setTotalAmount( amountBeingGambled );
             cout << amountBeingGambled << endl;
             
             isInvalidAmount = false;
@@ -93,26 +95,39 @@ int main(int argc, const char * argv[]) {
         }
     } while( isInvalidAmount );
     
+    user.setAccount(userAccount);
+    
     /* ----------------
      Game functionality.
      ---------------- */
     
-//    while (userWantsToPlay) {
-//        
-//        // generate four random cards, 2 for dealer, and 2 for player
-//        if (!hasDistributedInitCards) {
-//            for (int i = 0; i < 4; i++) {
-//                
-//            }
-//            hasDistributedInitCards = true;
-//        }
-//        
-//        cout << "The value of your cards is " << endl;
-//        
-//        // add input validation
-//        cout << "Do you want to HIT, STAND, or SPLIT? : ";
-//        cin >> userInputDecision;
-//    }
+    cout << "Welcome to Blackjack! \n" << endl;
+    
+    Card newCard = generateRandomCard();
+    
+    while (userWantsToPlay) {
+        
+        // generate four random cards, 2 for dealer, and 2 for player
+        if (!hasDistributedInitCards) {
+
+            for (int i = 0; i < 2; i++) {
+                Card newUserCard = generateRandomCard();
+                user.addCard( newUserCard );
+                cout << "line 200" << endl;
+                Card newDealerCard = generateRandomCard();
+                dealer.addCard( newDealerCard );
+            }
+            
+            hasDistributedInitCards = true;
+        }
+        
+        cout << "The value of your cards is " << user.getValueOfCards() <<  endl;
+        
+        // add input validation
+        cout << "Do you want to HIT, STAND, or SPLIT? : ";
+        cin >> userInputDecision;
+        userWantsToPlay = false;
+    }
     
     return 0;
 }
@@ -120,7 +135,7 @@ int main(int argc, const char * argv[]) {
 Card generateRandomCard() {
     srand(time(0));
     int randomCardIdentifier = rand() % POSSIBLE_CARDS;
-    Card newCard( randomCardIdentifier );
-    
-    return newCard;
+    //Card newCard( randomCardIdentifier );
+    Card* newCard = new Card( randomCardIdentifier );
+    return *newCard;
 }
