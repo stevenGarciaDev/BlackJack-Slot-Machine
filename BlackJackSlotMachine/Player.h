@@ -15,10 +15,8 @@
 class Player {
     private:
         Account playerAccount;
-        Card* cards = nullptr;
-        int numberOfCardsInHand;
-        int cardMemoryCapacity;
-        int valueOfCards;
+        Hand hand;
+        Hand splitHand;
     
     public:
         Player();
