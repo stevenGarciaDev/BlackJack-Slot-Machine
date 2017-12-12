@@ -13,11 +13,14 @@
 using namespace std;
 
 Player::Player() {
-    
+    this->hasSplit = false;
+    this->betAmount = 0;
 }
 
 Player::Player(Account accountNumber) {
     this->playerAccount = accountNumber;
+    this->hasSplit = false;
+    this->betAmount = 0;
 }
 
 void Player::setAccount(Account userAccount) {
@@ -27,7 +30,10 @@ void Player::setAccount(Account userAccount) {
 double Player::getAccount() const {
     return playerAccount.getTotalAmount();
 }
-
+double Player::bet(double amount){
+	this->playerAccount.setTotalAmount(this->playerAccount.getTotalAmount() - amount);
+	this->betAmount += amount; 
+}
 int Player::getNumberOfCardsInHand() const {
     return hand.getNumberOfCards();
 }
@@ -45,29 +51,38 @@ void Player::stand() {
 }
 
 void Player::hit(Card& newCard) {
-    addCard(newCard);
-    if (hand.getValueOfCards() > 21) {
-        loseGame();
+    if (hand.getValueOfCards() > 21){
+        if(this->hasSplit) {
+        	splitHand.addCard(newCard);	
+		}
     }
+    else{
+    	hand.addCard(newCard);
+	}
 }
 
-void Player::split() {
-//    this->splitCards = new Card[cardMemoryCapacity];
-	// 
+void Player::split(Card& handCard, Card& splitCard) {
+	this->hasSplit = true;
+	bet(this->betAmount); // Double the bet
+	hand.addCard(handCard);
+	splitHand.addCard(splitCard);
 }
 
 void Player::winGame() {
-    // User bet is doubled
+    this->playerAccount.setTotalAmount(this->playerAccount.getTotalAmount() + (2 * this->betAmount));
+    betAmount = 0;
     cout << "You win this game!" << endl;
 }
 
 void Player::loseGame() {
-	// User wins nothing
+	this->betAmount = 0;
     cout << "You lose this game." << endl;
 }
 
 void Player::tieGame(){
 	// User bet is split in half
+	this->playerAccount.setTotalAmount(this->playerAccount.getTotalAmount() + (this->betAmount / 2));
+    betAmount = 0;
 }
 
 

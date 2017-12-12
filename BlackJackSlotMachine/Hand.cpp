@@ -1,23 +1,35 @@
 #include "Hand.h"
 
+#include <iostream>
+
+using namespace std;
+
 Hand::Hand(){
 	this->numberOfCards = 0;
 	this->valueOfCards = 0;
 	this->cardMemoryCapacity = 10;
 	this->cards = new Card[cardMemoryCapacity];
 }
-Hand::Hand(Card* _cards){
-	this->numberOfCards = 0;
-	this->valueOfCards = 0;
+Hand::Hand(Card& _card){
+	this->numberOfCards = 1;
+	this->valueOfCards = _card.getValue();
 	this->cardMemoryCapacity = 10;
-	this->cards = _cards;
+	this->cards = new Card[cardMemoryCapacity];
+	addCard(_card);
 }
 
 void Hand::addCard(Card& newCard){
 	// ensure have enough memory in dynamic array
 	if(this->numberOfCards < this->cardMemoryCapacity){
-    	*(cards + numberOfCardsInHand + 1) = newCard;
-    	this->valueOfCards += newCard.getValue();
+    	*(cards + numberOfCards + 1) = newCard;
+    	// Checks the value of Ace: 1 (default), or 11
+    	if(newCard.getValue() == 1){ 
+    		if(this->valueOfCards + 11 == 21)
+    			setValueOfCards(this->valueOfCards + 11);
+		}
+		else{
+			setValueOfCards(this->valueOfCards + newCard.getValue());
+		}
     	this->numberOfCards++;
 	}
 	else{
@@ -26,8 +38,11 @@ void Hand::addCard(Card& newCard){
 }
 
 int Hand::getValueOfCards(){
-	return valueOfCards;
+	return this->valueOfCards;
 }
-int getNumberOfCards() const{
-	return numberOfCards;
+void Hand::setValueOfCards(int value){
+	this->valueOfCards = value;
+}
+int Hand::getNumberOfCards() const{
+	return this->numberOfCards;
 }

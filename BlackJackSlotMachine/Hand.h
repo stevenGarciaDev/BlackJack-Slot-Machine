@@ -1,7 +1,6 @@
 #ifndef Hand_h
 #define Hand_h
 
-#include <string>
 #include "Card.h"
 
 using namespace std;
@@ -14,9 +13,10 @@ class Hand{
 		int cardMemoryCapacity;
 	public:
 		Hand();
-		Hand(Card*);
+		Hand(Card&);
 		void addCard(Card&);
         int getValueOfCards();
+        void setValueOfCards(int);
         int getNumberOfCards() const;
         
 };

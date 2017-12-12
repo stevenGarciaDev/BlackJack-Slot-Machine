@@ -10,6 +10,7 @@
 #define Player_h
 
 #include "Account.h"
+#include "Hand.h"
 #include "Card.h"
 
 class Player {
@@ -17,22 +18,26 @@ class Player {
         Account playerAccount;
         Hand hand;
         Hand splitHand;
+        double betAmount;
+        bool hasSplit;
     
     public:
         Player();
         Player(Account);
         void setAccount(Account);
         double getAccount() const;
+        double bet(double);
         void setNumberOfCardsInHand(int);
         int getNumberOfCardsInHand() const;
         void addCard(Card&);
         int getValueOfCards();
         void stand();
         void hit(Card&);
-        void split();
+        void split(Card&, Card&);
     
         void winGame();
         void loseGame();
+        void tieGame();
 };
 
 #endif /* Player_h */
