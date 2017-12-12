@@ -27,6 +27,7 @@ class Player {
         void setAccount(Account);
         double getAccount() const;
         double bet(double);
+        void resetHand();
         void setNumberOfCardsInHand(int);
         int getNumberOfCardsInHand() const;
         void addCard(Card&);

@@ -34,6 +34,11 @@ double Player::bet(double amount){
 	this->playerAccount.setTotalAmount(this->playerAccount.getTotalAmount() - amount);
 	this->betAmount += amount; 
 }
+void Player::resetHand(){
+	// !!!Potential Memory Leak!!!
+	Hand* newHand = new Hand();
+	this->hand = *newHand;
+}
 int Player::getNumberOfCardsInHand() const {
     return hand.getNumberOfCards();
 }
@@ -70,13 +75,13 @@ void Player::split(Card& handCard, Card& splitCard) {
 
 void Player::winGame() {
     this->playerAccount.setTotalAmount(this->playerAccount.getTotalAmount() + (2 * this->betAmount));
+    cout << "You win $" << betAmount << endl;
     betAmount = 0;
-    cout << "You win this game!" << endl;
 }
 
 void Player::loseGame() {
-	this->betAmount = 0;
-    cout << "You lose this game." << endl;
+	cout << "You lose $" << betAmount << endl;
+    betAmount = 0;
 }
 
 void Player::tieGame(){

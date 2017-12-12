@@ -22,8 +22,8 @@ void Hand::addCard(Card& newCard){
 	// ensure have enough memory in dynamic array
 	if(this->numberOfCards < this->cardMemoryCapacity){
     	*(cards + numberOfCards + 1) = newCard;
-    	// Checks the value of Ace: 1 (default), or 11
-    	if(newCard.getValue() == 1){ 
+    	if(newCard.getCardType() == "Ace"){
+    		// Checks the value that a new Ace should be: 1 (default), or 11
     		if(this->valueOfCards + 11 == 21)
     			setValueOfCards(this->valueOfCards + 11);
 		}
