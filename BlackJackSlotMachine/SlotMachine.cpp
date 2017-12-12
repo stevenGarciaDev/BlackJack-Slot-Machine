@@ -200,7 +200,6 @@ Card generateRandomCard() {
     while(randomCardIdentifier <= 0){
     	randomCardIdentifier = rand() % POSSIBLE_CARDS;
 	}
-	 
     //Card newCard( randomCardIdentifier );
     Card* newCard = new Card( randomCardIdentifier );
     return *newCard;
@@ -219,17 +218,19 @@ bool playAgain(){
 }
 string getUserDecision(){
 	string input;
-	cout << "Do you want to HIT, STAND, or SPLIT? : ";
-	cin >> input;
-	
-	transform(input.begin(), input.end(), input.begin(), ::toupper);
-	
-	if(input == "HIT")
-    	return "HIT";
-	else if(input == "SPLIT")
-		return "SPLIT";
-	else if(input == "STAND")
-		return "STAND";
-	else
-		cout << "Please enter a valid answer. " << endl;
+	while(true){
+		cout << "Do you want to HIT, STAND, or SPLIT? : ";
+		cin >> input;
+		
+		transform(input.begin(), input.end(), input.begin(), ::toupper);
+		
+		if(input == "HIT")
+	    	return "HIT";
+		else if(input == "SPLIT")
+			return "SPLIT";
+		else if(input == "STAND")
+			return "STAND";
+		else
+			cout << "Please enter a valid answer. " << endl;
+	}
 }
