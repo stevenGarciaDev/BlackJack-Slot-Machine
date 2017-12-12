@@ -11,6 +11,7 @@ class Hand{
 		int valueOfCards;
 		int numberOfCards;
 		int cardMemoryCapacity;
+    
 	public:
 		Hand();
 		Hand(Card&);
@@ -18,6 +19,7 @@ class Hand{
         int getValueOfCards();
         void setValueOfCards(int);
         int getNumberOfCards() const;
+        void allocateDynamicMemory();
         
 };
 

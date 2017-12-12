@@ -32,7 +32,8 @@ double Player::getAccount() const {
 }
 double Player::bet(double amount){
 	this->playerAccount.setTotalAmount(this->playerAccount.getTotalAmount() - amount);
-	this->betAmount += amount; 
+	this->betAmount += amount;
+    return this->betAmount;
 }
 void Player::resetHand(){
 	// !!!Potential Memory Leak!!!

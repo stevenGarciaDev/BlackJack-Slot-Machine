@@ -33,6 +33,8 @@ void Hand::addCard(Card& newCard){
     	this->numberOfCards++;
 	}
 	else{
+        // allocate internal memory
+        allocateDynamicMemory();
 		cout << "Card Memory Capacity exceeded. Unable to add new card. " << endl;
 	}
 }
@@ -46,3 +48,16 @@ void Hand::setValueOfCards(int value){
 int Hand::getNumberOfCards() const{
 	return this->numberOfCards;
 }
+
+void Hand::allocateDynamicMemory() {
+    cardMemoryCapacity *= 2;
+    Card* newCardPtr = new Card[cardMemoryCapacity];
+    
+    for (int i = 0; i < numberOfCards; i++) {
+        *(newCardPtr + i) = cards[i];
+    }
+    
+    delete cards;
+    cards = newCardPtr;
+}
+

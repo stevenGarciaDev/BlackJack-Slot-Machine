@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		407F4C331FE0434B00735FFC /* Hand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 407F4C311FE0434B00735FFC /* Hand.cpp */; };
 		40DA3FA91FC2C721002108A6 /* SlotMachine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40DA3FA81FC2C721002108A6 /* SlotMachine.cpp */; };
 		40DA3FB11FC2C72F002108A6 /* Card.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40DA3FAF1FC2C72F002108A6 /* Card.cpp */; };
 		40DA3FB41FC2C73B002108A6 /* Account.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40DA3FB21FC2C73B002108A6 /* Account.cpp */; };
@@ -26,6 +27,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		407F4C311FE0434B00735FFC /* Hand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hand.cpp; sourceTree = "<group>"; };
+		407F4C321FE0434B00735FFC /* Hand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hand.h; sourceTree = "<group>"; };
 		40DA3FA51FC2C721002108A6 /* BlackJackSlotMachine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BlackJackSlotMachine; sourceTree = BUILT_PRODUCTS_DIR; };
 		40DA3FA81FC2C721002108A6 /* SlotMachine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SlotMachine.cpp; sourceTree = "<group>"; };
 		40DA3FAF1FC2C72F002108A6 /* Card.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Card.cpp; sourceTree = "<group>"; };
@@ -66,6 +69,8 @@
 		40DA3FA71FC2C721002108A6 /* BlackJackSlotMachine */ = {
 			isa = PBXGroup;
 			children = (
+				407F4C311FE0434B00735FFC /* Hand.cpp */,
+				407F4C321FE0434B00735FFC /* Hand.h */,
 				40DA3FA81FC2C721002108A6 /* SlotMachine.cpp */,
 				40DA3FAF1FC2C72F002108A6 /* Card.cpp */,
 				40DA3FB01FC2C72F002108A6 /* Card.h */,
@@ -138,6 +143,7 @@
 				40DA3FA91FC2C721002108A6 /* SlotMachine.cpp in Sources */,
 				40DA3FB41FC2C73B002108A6 /* Account.cpp in Sources */,
 				40DA3FB11FC2C72F002108A6 /* Card.cpp in Sources */,
+				407F4C331FE0434B00735FFC /* Hand.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
