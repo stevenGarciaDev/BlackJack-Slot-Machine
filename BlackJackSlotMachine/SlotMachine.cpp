@@ -12,11 +12,13 @@
 #include <iomanip>
 #include "Player.h"
 #include "Account.h"
+#include "Card.h"
 
 using namespace std;
 
 Card generateRandomCard();
 const int POSSIBLE_CARDS = 13;
+bool playAgain();
 
 int main(int argc, const char * argv[]) {
     cout << fixed << showpoint << setprecision(2);
@@ -105,10 +107,8 @@ int main(int argc, const char * argv[]) {
     
     Card newCard = generateRandomCard();
     
-    while (userWantsToPlay) {
-        
-        // generate four random cards, 2 for dealer, and 2 for player
-        if (!hasDistributedInitCards) {
+    // generate four random cards, 2 for dealer, and 2 for player
+//        if (!hasDistributedInitCards) {
 
             for (int i = 0; i < 2; i++) {
                 Card newUserCard = generateRandomCard();
@@ -119,14 +119,50 @@ int main(int argc, const char * argv[]) {
             }
             
             hasDistributedInitCards = true;
-        }
-        
-        cout << "The value of your cards is " << user.getValueOfCards() <<  endl;
-        
-        // add input validation
-        cout << "Do you want to HIT, STAND, or SPLIT? : ";
-        cin >> userInputDecision;
-        userWantsToPlay = false;
+//        }
+    while (userWantsToPlay) {
+    	bool playing = true;
+    	while(playing){
+	    	while(dealer.getValueOfCards() < 12){
+	    		// Dealer will hit as long as cards are less than 12
+	    		Card newDealerCard = generateRandomCard();
+	    		dealer.hit(newDealerCard);
+			}
+	        
+	        cout << "The value of the dealer's cards is " << dealer.getValueOfCards() << endl;
+	        cout << "The value of your cards is " << user.getValueOfCards() <<  endl;
+	        
+	        // add input validation
+	        cout << "Do you want to HIT, STAND, or SPLIT? : ";
+	        cin >> userInputDecision;
+	        if(userInputDecision == "HIT"){
+	        	Card newUserCard = generateRandomCard();
+	            user.hit( newUserCard );
+			}
+			else if(userInputDecision == "SPLIT"){
+				Card card1 = generateRandomCard();
+				Card card2 = generateRandomCard();
+				user.split(card1, card2);
+			}
+			else if(userInputDecision == "STAND"){
+				user.stand();
+			}
+	        if(user.getValueOfCards() > 21){
+	        	user.loseGame();
+	        	playing = false;
+			}
+			else if(user.getValueOfCards() == 21){
+				user.winGame();
+				playing = false;
+			}
+			else if(dealer.getValueOfCards() > 21){
+				user.winGame();
+				playing = false;
+			}
+		}
+		
+		// Prompt user to play again
+		userWantsToPlay = playAgain();
     }
     
     return 0;
@@ -138,4 +174,17 @@ Card generateRandomCard() {
     //Card newCard( randomCardIdentifier );
     Card* newCard = new Card( randomCardIdentifier );
     return *newCard;
+}
+
+bool playAgain(){
+	char userChoice;
+	while(true){
+		// loop only breaks when given valid answer (Y/N)
+		cout << "Would you like to play again (Y/N)?" << endl;
+		cin >> userChoice;
+		if(userChoice == 'Y') return true; 
+		else if (userChoice == 'N') return false;
+		else cout << "Please enter a valid answer (Y/N)" << endl;
+	}
+	
 }
