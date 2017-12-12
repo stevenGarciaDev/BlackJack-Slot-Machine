@@ -9,6 +9,7 @@
 #include <iostream>
 #include <stdlib.h> // for rand() and srand() function
 #include <exception>
+#include <algorithm> // for transform()
 #include <iomanip>
 #include "Player.h"
 #include "Account.h"
@@ -19,6 +20,7 @@ using namespace std;
 Card generateRandomCard();
 const int POSSIBLE_CARDS = 13;
 bool playAgain();
+string getUserDecision();
 
 int main(int argc, const char * argv[]) {
     cout << fixed << showpoint << setprecision(2);
@@ -88,7 +90,8 @@ int main(int argc, const char * argv[]) {
             // str needs to be converted to c_str then converted to double value
             amountBeingGambled = atof(userInputDecision.c_str());
             userAccount.setTotalAmount( amountBeingGambled );
-            cout << amountBeingGambled << endl;
+            cout << endl; // Output formatting
+            cout << "The amount being gambled is: $" << amountBeingGambled << endl;
             
             isInvalidAmount = false;
             
@@ -103,61 +106,83 @@ int main(int argc, const char * argv[]) {
      Game functionality.
      ---------------- */
     
+    cout << endl; // Output formatting
     cout << "Welcome to Blackjack! \n" << endl;
     
-    Card newCard = generateRandomCard();
     
-    // generate four random cards, 2 for dealer, and 2 for player
-//        if (!hasDistributedInitCards) {
-
-            for (int i = 0; i < 2; i++) {
-                Card newUserCard = generateRandomCard();
-                user.addCard( newUserCard );
-                cout << "line 200" << endl;
-                Card newDealerCard = generateRandomCard();
-                dealer.addCard( newDealerCard );
-            }
-            
-            hasDistributedInitCards = true;
-//        }
+    // Loop Until User decides not to play
     while (userWantsToPlay) {
-    	bool playing = true;
-    	while(playing){
-	    	while(dealer.getValueOfCards() < 12){
-	    		// Dealer will hit as long as cards are less than 12
+    	
+    	user.bet(amountBeingGambled);
+    	user.resetHand();
+    	dealer.resetHand();
+    	// generate initial four random cards, 2 for dealer, and 2 for player
+	    for (int i = 0; i < 2; i++) {
+	        Card newUserCard = generateRandomCard();
+	        user.addCard( newUserCard );
+	        Card newDealerCard = generateRandomCard();
+	        dealer.addCard( newDealerCard );
+	    }
+    	
+    	// Infinite Loop will Break when Dealer or User loses/wins
+    	while(true){
+	    	while(dealer.getValueOfCards() < 15 ){
+	    		// Dealer will continue to hit as long as cards are less than 15
 	    		Card newDealerCard = generateRandomCard();
 	    		dealer.hit(newDealerCard);
+	    		if(dealer.getValueOfCards() > 21){
+	    			break;
+				}
 			}
 	        
 	        cout << "The value of the dealer's cards is " << dealer.getValueOfCards() << endl;
 	        cout << "The value of your cards is " << user.getValueOfCards() <<  endl;
 	        
 	        // add input validation
-	        cout << "Do you want to HIT, STAND, or SPLIT? : ";
-	        cin >> userInputDecision;
+	        userInputDecision = getUserDecision();
+	        
 	        if(userInputDecision == "HIT"){
+	        	cout << endl; // Output formatting
+	        	cout << "Dealing card..." << endl; // Output formatting
 	        	Card newUserCard = generateRandomCard();
 	            user.hit( newUserCard );
+	            if(user.getValueOfCards() > 21){
+	            	cout << "The value of your cards is " << user.getValueOfCards() << endl;
+	            	user.loseGame();
+	            	break;
+				}
+				else if(user.getValueOfCards() == 21){
+					cout << "The value of your cards is " << user.getValueOfCards() << endl;
+					user.winGame();
+					break;
+				}
 			}
 			else if(userInputDecision == "SPLIT"){
+				// Need to add Player implementation of split scenario
 				Card card1 = generateRandomCard();
 				Card card2 = generateRandomCard();
 				user.split(card1, card2);
+				if(user.getValueOfCards() > 21){
+	            	user.loseGame();
+	            	break;
+				}
 			}
 			else if(userInputDecision == "STAND"){
-				user.stand();
-			}
-	        if(user.getValueOfCards() > 21){
-	        	user.loseGame();
-	        	playing = false;
-			}
-			else if(user.getValueOfCards() == 21){
-				user.winGame();
-				playing = false;
-			}
-			else if(dealer.getValueOfCards() > 21){
-				user.winGame();
-				playing = false;
+				user.stand(); // Arbitrary function; does nothing
+				if(dealer.getValueOfCards() > 21){
+					user.winGame();
+					break;
+				}
+				else{
+					if(user.getValueOfCards() < dealer.getValueOfCards()){
+						user.loseGame();
+						break;
+					}
+					else{
+						user.winGame();
+						break;
+					}
+				}
 			}
 		}
 		
@@ -170,7 +195,12 @@ int main(int argc, const char * argv[]) {
 
 Card generateRandomCard() {
     srand(time(0));
-    int randomCardIdentifier = rand() % POSSIBLE_CARDS;
+    int randomCardIdentifier = 0;
+    // Loop ensures that 0 is not returned
+    while(randomCardIdentifier <= 0){
+    	randomCardIdentifier = rand() % POSSIBLE_CARDS;
+	}
+	 
     //Card newCard( randomCardIdentifier );
     Card* newCard = new Card( randomCardIdentifier );
     return *newCard;
@@ -186,5 +216,20 @@ bool playAgain(){
 		else if (userChoice == 'N') return false;
 		else cout << "Please enter a valid answer (Y/N)" << endl;
 	}
+}
+string getUserDecision(){
+	string input;
+	cout << "Do you want to HIT, STAND, or SPLIT? : ";
+	cin >> input;
 	
+	transform(input.begin(), input.end(), input.begin(), ::toupper);
+	
+	if(input == "HIT")
+    	return "HIT";
+	else if(input == "SPLIT")
+		return "SPLIT";
+	else if(input == "STAND")
+		return "STAND";
+	else
+		cout << "Please enter a valid answer. " << endl;
 }
