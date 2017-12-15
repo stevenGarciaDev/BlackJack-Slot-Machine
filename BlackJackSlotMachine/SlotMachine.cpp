@@ -21,17 +21,18 @@ Card generateRandomCard();
 const int POSSIBLE_CARDS = 13;
 bool playAgain();
 string getUserDecision();
+double getAmountToGamble(string);
 
 int main(int argc, const char * argv[]) {
     cout << fixed << showpoint << setprecision(2);
     
     bool isInvalidAccount = true;
-    bool isInvalidAmount = true;
+   // bool isInvalidAmount = true;
     bool userWantsToPlay = true;
-    int decimalOccurances = 0;
+    //int decimalOccurances = 0;
     string accountNumber;
-    double amountBeingGambled;
     string userInputDecision;
+    double amountBeingGambled;
     
     Account userAccount;
     Player dealer;
@@ -59,46 +60,6 @@ int main(int argc, const char * argv[]) {
         }
     } while (isInvalidAccount);
     
-    /* ----------------
-     Accept valid double precision amount that user wants to gamble.
-     ---------------- */
-    
-    cin.ignore();
-    
-    do {
-        try {
-            cout << "Enter the amount of money you want to bet (Ex: 1150.49): ";
-            getline(cin, userInputDecision); // take in input as a string
-            
-            for (int i = 0; i < userInputDecision.length(); i++) {
-                if (userInputDecision[i] == 46) {
-                    decimalOccurances++;
-                    
-                    if (decimalOccurances > 1) {
-                        throw "Invalid Character, too many decimal points";
-                    }
-                    
-                    continue;
-                }
-                
-                if (48 > userInputDecision[i] || 57 < userInputDecision[i]) {
-                    throw "Invalid Character";
-                 }
-            }
-            
-            // str needs to be converted to c_str then converted to double value
-            amountBeingGambled = atof(userInputDecision.c_str());
-            userAccount.setTotalAmount( amountBeingGambled );
-            cout << endl; // Output formatting
-            cout << "The amount being gambled is: $" << amountBeingGambled << endl;
-            
-            isInvalidAmount = false;
-            
-        } catch (char const* exc) {
-            cout << "Invalid amount entered. Please enter in format example: 2500.00 " << endl;
-        }
-    } while( isInvalidAmount );
-    
     user.setAccount(userAccount);
     
     /* ----------------
@@ -112,6 +73,8 @@ int main(int argc, const char * argv[]) {
     // Loop Until User decides not to play
     while (userWantsToPlay) {
     	
+        // Accept valid double precision amount that user wants to gamble.
+        amountBeingGambled = getAmountToGamble(userInputDecision);
     	user.bet(amountBeingGambled);
     	user.resetHand();
     	dealer.resetHand();
@@ -233,3 +196,46 @@ string getUserDecision(){
 			cout << "Please enter a valid answer. " << endl;
 	}
 }
+
+double getAmountToGamble(string userInputDecision) {
+    bool isInvalidAmount = true;
+    int decimalOccurances = 0;
+    double amountBeingGambled = 0;
+    
+    do {
+        try {
+            cout << "\nEnter the amount of money you want to bet (Ex: 1150.49): ";
+            //getline(cin, userInputDecision); // take in input as a string
+            cin >> userInputDecision;
+
+            for (int i = 0; i < userInputDecision.length(); i++) {
+                if (userInputDecision[i] == 46) {
+                    decimalOccurances++;
+                    
+                    if (decimalOccurances > 1) {
+                        throw "Invalid Character, too many decimal points";
+                    }
+                    
+                    continue;
+                }
+                
+                if (48 > userInputDecision[i] || 57 < userInputDecision[i]) {
+                    throw "Invalid Character";
+                }
+            }
+            
+            // str needs to be converted to c_str then converted to double value
+            amountBeingGambled = atof(userInputDecision.c_str());
+            cout << endl; // Output formatting
+            cout << "The amount being gambled is: $" << amountBeingGambled << endl;
+            
+            isInvalidAmount = false;
+            
+        } catch (char const* exc) {
+            cout << "Invalid amount entered. Please enter in format example: 2500.00 " << endl;
+        }
+    } while( isInvalidAmount );
+    
+    return amountBeingGambled;
+}
+

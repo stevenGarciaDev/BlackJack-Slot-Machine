@@ -19,7 +19,7 @@ Hand::Hand(string handType){
 	this->cards = new Card[cardMemoryCapacity];
 }
 Hand::~Hand(){
-	delete cards;
+    delete [] cards;
 }
 
 void Hand::addCard(Card& newCard){
@@ -69,7 +69,7 @@ void Hand::allocateDynamicMemory() {
         *(newCardPtr + i) = cards[i];
     }
     
-    delete cards;
+    delete [] cards;
     cards = newCardPtr;
 }
 
