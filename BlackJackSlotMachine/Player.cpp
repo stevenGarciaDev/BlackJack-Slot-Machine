@@ -103,11 +103,13 @@ void Player::split(Card& handCard, Card& splitCard) {
 void Player::winGame() {
     this->playerAccount.setTotalAmount(this->playerAccount.getTotalAmount() + (2 * this->betAmount));
     cout << "You win $" << betAmount << endl;
+    cout << "The total amount in your account is $" << getAccount() << endl;
     betAmount = 0;
 }
 
 void Player::loseGame() {
 	cout << "You lose $" << betAmount << endl;
+    cout << "The total amount in your account is $" << getAccount() << endl;
     betAmount = 0;
 }
 
