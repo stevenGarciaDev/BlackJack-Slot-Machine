@@ -16,6 +16,9 @@ Account::Account() {
 Account::Account(string accountNumber) {
     this->accountNumber = accountNumber;
 }
+Account::~Account(){
+	
+}
 
 string Account::getAccountNumber() const {
     return this->accountNumber;

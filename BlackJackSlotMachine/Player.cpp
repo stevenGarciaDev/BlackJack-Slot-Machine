@@ -14,13 +14,17 @@ using namespace std;
 
 Player::Player() {
     this->hasSplit = false;
+    this->usingSplitHand = false;
     this->betAmount = 0;
 }
 
 Player::Player(Account accountNumber) {
     this->playerAccount = accountNumber;
     this->hasSplit = false;
+    this->usingSplitHand = false;
     this->betAmount = 0;
+}
+Player::~Player(){
 }
 
 void Player::setAccount(Account userAccount) {
@@ -40,28 +44,49 @@ void Player::resetHand(){
 	Hand* newHand = new Hand();
 	this->hand = *newHand;
 }
-int Player::getNumberOfCardsInHand() const {
-    return hand.getNumberOfCards();
+void Player::switchHands(){
+	usingSplitHand = !usingSplitHand;
 }
-
+bool Player::isSplit() const{
+	return hasSplit;
+}
+int Player::getNumberOfCardsInHand() const {
+    if(usingSplitHand){
+		return splitHand.getValueOfCards();
+	}
+    else{
+    	return hand.getValueOfCards();
+	}
+}
+string Player::getCurrentHand(){
+	if(usingSplitHand){
+		return splitHand.getType();
+	}
+	else{
+		return hand.getType();
+	}
+}
 void Player::addCard(Card& newCard) {
     hand.addCard(newCard);
 }
 
 int Player::getValueOfCards() {
-    return hand.getValueOfCards();
+	if(usingSplitHand){
+		return splitHand.getValueOfCards();
+	}
+    else{
+    	return hand.getValueOfCards();
+	}
 }
 
 void Player::stand() {
-    // Player does nothing
+	// Player does nothing
 }
 
 void Player::hit(Card& newCard) {
-    if (hand.getValueOfCards() > 21){
-        if(this->hasSplit) {
-        	splitHand.addCard(newCard);	
-		}
-    }
+    if(usingSplitHand) {
+    	splitHand.addCard(newCard);	
+	}
     else{
     	hand.addCard(newCard);
 	}
@@ -72,6 +97,7 @@ void Player::split(Card& handCard, Card& splitCard) {
 	bet(this->betAmount); // Double the bet
 	hand.addCard(handCard);
 	splitHand.addCard(splitCard);
+	splitHand.setType("Secondary");
 }
 
 void Player::winGame() {

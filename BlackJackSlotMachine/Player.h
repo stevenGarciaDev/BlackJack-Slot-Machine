@@ -9,9 +9,11 @@
 #ifndef Player_h
 #define Player_h
 
+
 #include "Account.h"
 #include "Hand.h"
 #include "Card.h"
+#include <string>
 
 class Player {
     private:
@@ -20,14 +22,19 @@ class Player {
         Hand splitHand;
         double betAmount;
         bool hasSplit;
+        bool usingSplitHand;
     
     public:
         Player();
         Player(Account);
+        ~Player();
         void setAccount(Account);
         double getAccount() const;
         double bet(double);
         void resetHand();
+        bool isSplit() const;
+        void switchHands();
+        string getCurrentHand();
         void setNumberOfCardsInHand(int);
         int getNumberOfCardsInHand() const;
         void addCard(Card&);

@@ -5,17 +5,21 @@
 using namespace std;
 
 Hand::Hand(){
+	this->type = "Primary";
 	this->numberOfCards = 0;
 	this->valueOfCards = 0;
 	this->cardMemoryCapacity = 10;
 	this->cards = new Card[cardMemoryCapacity];
 }
-Hand::Hand(Card& _card){
-	this->numberOfCards = 1;
-	this->valueOfCards = _card.getValue();
+Hand::Hand(string handType){
+	this->type = handType;
+	this->numberOfCards = 0;
+	this->valueOfCards = 0;
 	this->cardMemoryCapacity = 10;
 	this->cards = new Card[cardMemoryCapacity];
-	addCard(_card);
+}
+Hand::~Hand(){
+	delete cards;
 }
 
 void Hand::addCard(Card& newCard){
@@ -38,8 +42,13 @@ void Hand::addCard(Card& newCard){
 		cout << "Card Memory Capacity exceeded. Unable to add new card. " << endl;
 	}
 }
-
-int Hand::getValueOfCards(){
+string Hand::getType()const{
+	return type;
+}
+void Hand::setType(string handType){
+	type = handType;
+}
+int Hand::getValueOfCards() const{
 	return this->valueOfCards;
 }
 void Hand::setValueOfCards(int value){
@@ -47,6 +56,9 @@ void Hand::setValueOfCards(int value){
 }
 int Hand::getNumberOfCards() const{
 	return this->numberOfCards;
+}
+void Hand::setNumberOfCards(int num){
+	this->numberOfCards = num;
 }
 
 void Hand::allocateDynamicMemory() {

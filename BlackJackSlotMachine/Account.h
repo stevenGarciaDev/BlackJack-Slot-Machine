@@ -21,6 +21,7 @@ class Account {
     public:
         Account();
         Account(string);
+        ~Account();
         string getAccountNumber() const;
         void setAccountNumber(string);
         double getTotalAmount() const;
