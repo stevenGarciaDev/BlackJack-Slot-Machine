@@ -36,6 +36,10 @@ void Hand::addCard(Card& newCard){
 			setValueOfCards(this->valueOfCards + newCard.getValue());
 		}
     	this->numberOfCards++;
+        
+        if (this->numberOfCards == this->cardMemoryCapacity-1) {
+            allocateDynamicMemory();
+        }
 	}
 	else{
         // allocate internal memory
