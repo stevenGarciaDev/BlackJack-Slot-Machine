@@ -28,7 +28,6 @@ int main(int argc, const char * argv[]) {
     bool isInvalidAccount = true;
     bool isInvalidAmount = true;
     bool userWantsToPlay = true;
-    bool hasDistributedInitCards = false;
     int decimalOccurances = 0;
     string accountNumber;
     double amountBeingGambled;
@@ -136,7 +135,7 @@ int main(int argc, const char * argv[]) {
 			}
 	        
 	        cout << "The value of the dealer's cards is " << dealer.getValueOfCards() << endl;
-	        cout << "The value of your cards is " << user.getValueOfCards() <<  endl;
+	        cout << "The value of your current hand is " << user.getValueOfCards() <<  endl;
 	        
 	        // add input validation
 	        userInputDecision = getUserDecision();
@@ -147,12 +146,12 @@ int main(int argc, const char * argv[]) {
 	        	Card newUserCard = generateRandomCard();
 	            user.hit( newUserCard );
 	            if(user.getValueOfCards() > 21){
-	            	cout << "The value of your cards is " << user.getValueOfCards() << endl;
+	            	cout << "The value of your hand is " << user.getValueOfCards() << endl;
 	            	user.loseGame();
 	            	break;
 				}
 				else if(user.getValueOfCards() == 21){
-					cout << "The value of your cards is " << user.getValueOfCards() << endl;
+					cout << "The value of your hand is " << user.getValueOfCards() << endl;
 					user.winGame();
 					break;
 				}
@@ -188,7 +187,7 @@ int main(int argc, const char * argv[]) {
 		
 		// Prompt user to play again
 		userWantsToPlay = playAgain();
-    }
+	}
     
     return 0;
 }
