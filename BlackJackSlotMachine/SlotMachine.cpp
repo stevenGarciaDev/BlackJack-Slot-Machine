@@ -24,6 +24,7 @@ string getUserDecision();
 double getAmountToBet(string, double);
 
 int main(int argc, const char * argv[]) {
+    srand(time(0));
     cout << fixed << showpoint << setprecision(2);
     
     bool isInvalidAccount = true;
@@ -128,14 +129,14 @@ int main(int argc, const char * argv[]) {
     	
     	// Infinite Loop will Break when Dealer or User loses/wins
     	while(true){
-	    	while(dealer.getValueOfCards() < 15 ){
-	    		// Dealer will continue to hit as long as cards are less than 15
-	    		Card newDealerCard = generateRandomCard();
-	    		dealer.hit(newDealerCard);
-	    		if(dealer.getValueOfCards() > 21){
-	    			break;
-				}
-			}
+//	    	while(dealer.getValueOfCards() < 15 ){
+//	    		// Dealer will continue to hit as long as cards are less than 15
+//	    		Card newDealerCard = generateRandomCard();
+//	    		dealer.hit(newDealerCard);
+//	    		if(dealer.getValueOfCards() > 21){
+//	    			break;
+//				}
+//			}
 	        
 	        cout << "The value of the dealer's cards is " << dealer.getValueOfCards() << endl;
 	        cout << "The value of your current hand is " << user.getValueOfCards() <<  endl;
@@ -146,9 +147,22 @@ int main(int argc, const char * argv[]) {
 	        if(userInputDecision == "HIT"){
 	        	cout << endl; // Output formatting
 	        	cout << "Dealing card..." << endl; // Output formatting
+                
 	        	Card newUserCard = generateRandomCard();
 	            user.hit( newUserCard );
-	            if(user.getValueOfCards() > 21){
+                
+                Card newDealerCard = generateRandomCard();
+                dealer.hit(newDealerCard);
+                
+                if (dealer.getValueOfCards() == user.getValueOfCards() && user.getValueOfCards() == 21) {
+                    user.tieGame();
+                    break;
+                }
+                else if(dealer.getValueOfCards() > 21){
+                    user.winGame();
+                    break;
+                }
+	            else if(user.getValueOfCards() > 21){
 	            	cout << "The value of your hand is " << user.getValueOfCards() << endl;
 	            	user.loseGame();
 	            	break;
@@ -171,6 +185,14 @@ int main(int argc, const char * argv[]) {
 			}
 			else if(userInputDecision == "STAND"){
 				user.stand(); // Arbitrary function; does nothing
+                Card newDealerCard = generateRandomCard();
+                dealer.hit(newDealerCard);
+                
+                if (dealer.getValueOfCards() == user.getValueOfCards() && user.getValueOfCards() == 21) {
+                    user.tieGame();
+                    break;
+                }
+                
 				if(dealer.getValueOfCards() > 21){
 					user.winGame();
 					break;
@@ -196,7 +218,6 @@ int main(int argc, const char * argv[]) {
 }
 
 Card generateRandomCard() {
-    srand(time(0));
     int randomCardIdentifier = 0;
     // Loop ensures that 0 is not returned
     while(randomCardIdentifier <= 0){

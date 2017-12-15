@@ -116,6 +116,8 @@ void Player::loseGame() {
 void Player::tieGame(){
 	// User bet is split in half
 	this->playerAccount.setTotalAmount(this->playerAccount.getTotalAmount() + (this->betAmount / 2));
+    cout << "Tie game! Total you lossed is " << (this->betAmount / 2) << endl;
+    cout << "The total amount in your account is $" << getAccount() << endl;
     betAmount = 0;
 }
 
