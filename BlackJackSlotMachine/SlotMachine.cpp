@@ -244,7 +244,7 @@ double getAmountToBet(string userInputDecision, double maxAmount) {
     
     do {
         try {
-            cout << "\nEnter the amount of money you want to bet (Ex: 1150.49): ";
+            cout << "\nEnter the amount of money you want to bet (less than $" << maxAmount << "): ";
             //getline(cin, userInputDecision); // take in input as a string
             cin >> userInputDecision;
 
